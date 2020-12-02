@@ -74,22 +74,6 @@ EOT;
         }
         return $menu;
     }
-
-    private function renderLogin(){
-        $r = new \mf\router\Router();
-        $url = $r->urlFor("checklogin",null);
-        $formulaire = <<<EOT
-            <form method="post" class="forms" action="${url}">
-                <input class="forms-text" type="text" name="username" placeholder="Ici votre username">
-                <br>
-                <input class="forms-text" type="password" name="password" placeholder="Password">
-                <button class="forms-button" type="submit">
-                Login
-                </button>
-            </form>
-EOT;
-        return $formulaire;   
-    }
     
     /* Méthode renderFooter
      *
@@ -99,31 +83,11 @@ EOT;
         return 'La super app créée en Licence Pro &copy;2020';
     }
 
-    private function renderBottomMenu(){
-
-        $auth = new \mf\auth\Authentification();
-        $chaine_button = "";
-        if($auth->logged_in)
-        {
-            $r = new \mf\router\Router();
-            $url = $r->urlFor("post",null);
-            $chaine_button .= <<<EOT
-            <nav class=theme-backcolor1>    
-            <a class="theme-backcolor2" href="{$url}">
-            New
-            </a>
-        </nav>
-EOT;
-        }
-        return $chaine_button;
-    }
-
     /* Méthode renderHome
      *
      * Vue de la fonctionalité afficher tous les Tweets. 
      *  
      */
-    
     private function renderHome(){
 
         $r = new \mf\router\Router();
@@ -143,31 +107,10 @@ EOT;
          *  
          * L'attribut $this->data contient un tableau d'objets tweet.
          * 
-         */
-        
-        
+         */        
     }
-    private function renderSignup(){
-        $r = new \mf\router\Router();
-        $url = $r->urlFor("checksignup",null);
-        $formulaire = <<<EOT
-            <form method="post" class="forms" action="${url}">
-                <input class="forms-text" type="text" name="fullname" placeholder="Fullname">
-                <br>
-                <input class="forms-text" type="text" name="username" placeholder="Username">
-                <br>
-                <input class="forms-text" type="password" name="password" placeholder="Password">
-                <br>
-                <input class="forms-text" type="password" name="password_verify" placeholder="Retaper Password">
-                <button class="forms-button" type="submit">
-                Create
-                </button>
-            </form>
-EOT;
-        return $formulaire;   
-    }
-  
-    /* Méthode renderUeserTweets
+
+    /* Méthode renderUserTweets
      *
      * Vue de la fonctionalité afficher tout les Tweets d'un utilisateur donné. 
      * 
@@ -276,11 +219,71 @@ EOT;
         return $formulaire;    
     }
 
+    //Retourne une chaine de caractère HTML après l'enregistrement du tweet dans la BDD
     protected function renderSend()
     {
         return "<div>Tweet ajouté à la base de données avec succés!</div>";
     }
 
+    //Retourne le code HTML du formulaire de connexion demandant le nom d'utilisateur et son mot de passe
+    private function renderLogin(){
+        $r = new \mf\router\Router();
+        $url = $r->urlFor("checklogin",null);
+        $formulaire = <<<EOT
+            <form method="post" class="forms" action="${url}">
+                <input class="forms-text" type="text" name="username" placeholder="Ici votre username">
+                <br>
+                <input class="forms-text" type="password" name="password" placeholder="Password">
+                <button class="forms-button" type="submit">
+                Login
+                </button>
+            </form>
+EOT;
+        return $formulaire;   
+    }
+    
+    //Retourne un code HTML qui affiche si l'utilisateur est authentifié, un bouton "NEW" en bas de page qui envoi à la vue Post Tweet 
+    private function renderBottomMenu(){
+
+        $auth = new \mf\auth\Authentification();
+        $chaine_button = "";
+        if($auth->logged_in)
+        {
+            $r = new \mf\router\Router();
+            $url = $r->urlFor("post",null);
+            $chaine_button .= <<<EOT
+            <nav class=theme-backcolor1>    
+            <a class="theme-backcolor2" href="{$url}">
+            New
+            </a>
+        </nav>
+EOT;
+        }
+        return $chaine_button;
+    }
+
+    //Retourne un code HTML avec une interface de création de compte
+    private function renderSignup(){
+        $r = new \mf\router\Router();
+        $url = $r->urlFor("checksignup",null);
+        $formulaire = <<<EOT
+            <form method="post" class="forms" action="${url}">
+                <input class="forms-text" type="text" name="fullname" placeholder="Fullname">
+                <br>
+                <input class="forms-text" type="text" name="username" placeholder="Username">
+                <br>
+                <input class="forms-text" type="password" name="password" placeholder="Password">
+                <br>
+                <input class="forms-text" type="password" name="password_verify" placeholder="Retaper Password">
+                <button class="forms-button" type="submit">
+                Create
+                </button>
+            </form>
+EOT;
+        return $formulaire;   
+    }
+
+    // Retourne un code HTML qui affiche les personnes que vous suivez avec leurs tweets, ainsi que le nombre de personne qui vous suit ainsi que leurs liens
     private function renderPerso()
     {
         $r = new \mf\router\Router();
@@ -292,7 +295,6 @@ EOT;
                 $result=1;
             }
         }
-
         if($result){
             $chaine_retour ="<br><h3>Vous ne suivez personne et aucune personne vous suit</h3>";
         }
@@ -331,6 +333,7 @@ EOT;
         return $chaine_retour;
     }
 
+    //Retourne un code HTML du tableau de bord de l'admin avec la liste des utilisateurs par nombre de suiveur et ses suiveurs 
     private function renderTableau()
     {
         $r = new \mf\router\Router();
@@ -419,5 +422,4 @@ EOT;
          */
         
     }
-    
 }

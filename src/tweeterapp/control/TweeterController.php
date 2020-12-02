@@ -37,7 +37,6 @@ class TweeterController extends \mf\control\AbstractController {
      * Réalise la fonctionnalité : afficher la liste de Tweet
      * 
      */
-    
     public function viewHome(){
 
         $tweets = \tweeterapp\model\Tweet::orderBy('created_at','DESC')->get();
@@ -51,7 +50,6 @@ class TweeterController extends \mf\control\AbstractController {
          *  3 Retourner un block HTML qui met en forme la liste
          * 
          */
-        
     }
 
     /* Méthode viewTweet : 
@@ -59,7 +57,6 @@ class TweeterController extends \mf\control\AbstractController {
      * Réalise la fonctionnalité afficher un Tweet
      *
      */
-    
     public function viewTweet(){
         $id = $this->request->get;
         $tweet = \tweeterapp\model\Tweet::select()->where('id','=',$id)->first();
@@ -116,11 +113,13 @@ class TweeterController extends \mf\control\AbstractController {
         
     }
 
+    //Controller de la vue new post tweet
     public function viewPost(){
         $vue = new \tweeterapp\view\TweeterView("");
         $vue->render('post');
     }
 
+    //Controller de la vue send, gère les données envoyé en POST dans le textArea et enregistre le tweet dans la BDD
     public function viewSend(){
         $username= $_SESSION['user_login'];
         $user = \tweeterapp\model\User::where('username','=', $username)->first();
@@ -133,6 +132,9 @@ class TweeterController extends \mf\control\AbstractController {
         $vue->render('send');
     }
 
+    /* Controller du bouton Like sur un tweet précis.
+    Ajout ou retrait du like en fonction de l'id user, idTweet et de la table Like
+    */
     public function viewLike(){
         $user = \tweeterapp\model\User::where('username','=', $_SESSION['user_login'])->first();
         $id = $this->request->get;
@@ -160,6 +162,10 @@ class TweeterController extends \mf\control\AbstractController {
         }
         $vue->render('view');
     }
+
+    /*Controller du bouton Follow sur un tweet
+    Récupère l'id du user, de l'auteur du tweet et ajout dans la table Follow du follower et followee
+    */
     public function viewFollow(){
         $user = \tweeterapp\model\User::where('username','=', $_SESSION['user_login'])->first();
         $id = $this->request->get;
@@ -176,20 +182,24 @@ class TweeterController extends \mf\control\AbstractController {
             $user->save();
         }
         else{
-            echo("Vous suivez déja cette personne");
+            echo("Vous suivez déja cette personne"); //Exception
         }
         $vue = new \tweeterapp\view\TweeterView($tweet);
         $vue->render('view');
     }
 
+    /*Controller de la page personnelle de l'utilisateur authentifié
+    Récupère l'id de l'utilisateur connecté dans $_SESSION et récupère à la fois les différents tweets des utilisateurs qu'il suit
+    Ainsi que les utilisateurs qui le suivent
+    */
     public function viewPerso(){
         $user = \tweeterapp\model\User::where('username','=', $_SESSION['user_login'])->first();
         $follow = $user->follows()->get();
         foreach($follow as $following)
         {
-            $liste_tweet[$following->username] = $following->tweets()->orderBy('created_at','DESC')->get();
+            $liste_tweet[$following->username] = $following->tweets()->orderBy('created_at','DESC')->get();//Contient les tweets d'un utilisateur qu'il suit
         }
-        $liste_tweet[1]= $user->followedBy()->get();
+        $liste_tweet[1]= $user->followedBy()->get(); // Contient les suiveurs
         $vue = new \tweeterapp\view\TweeterView($liste_tweet);
         $vue->render('perso');
     }

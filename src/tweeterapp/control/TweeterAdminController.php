@@ -45,6 +45,7 @@ class TweeterAdminController extends \mf\control\AbstractController
         $vue->render('signup');
     }
 
+    //Controller du tableau de bord de l'admin avec les données des followers des utilisateurs par ordre décroissant
     public function tableau(){
         $users = \tweeterapp\model\User::select('id','username')->orderBy('followers','DESC')->get();
         foreach($users as $user)
