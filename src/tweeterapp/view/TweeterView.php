@@ -283,7 +283,7 @@ EOT;
         return $formulaire;   
     }
 
-    // Retourne un code HTML qui affiche les personnes que vous suivez avec leurs tweets, ainsi que le nombre de personne qui vous suit ainsi que leurs liens
+    // (ancien nom RenderFollower) Retourne un code HTML qui affiche les personnes que vous suivez avec leurs tweets, ainsi que le nombre de personne qui vous suit ainsi que leurs liens
     private function renderPerso()
     {
         $r = new \mf\router\Router();
