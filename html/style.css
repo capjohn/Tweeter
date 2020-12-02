@@ -1,0 +1,356 @@
+body {
+    width :90%;
+    box-sizing : border-box ;
+    margin : 1% auto 1% auto;
+    padding : 0px;
+    min-width : 350px;
+    max-width : 600px;
+    font-family: sans-serif; 
+}
+
+.theme-backcolor1 {
+    background : #0099cc;
+}
+
+.theme-backcolor2 {
+    background : #dcf0f7;
+}
+
+header,section, footer{
+    box-sizing : border-box ;
+    width : 100%;
+    padding : 0px;
+    margin : 0px;
+    text-align : center;
+}
+
+header, footer{
+    border-radius: 1rem;
+    line-height : 3rem;
+}
+
+header {
+    font-size : 2rem;
+    line-height : 3rem;
+    min-height : 2.2rem;
+    margin-bottom: 10px;
+}
+
+section {
+    min-height : 400px;
+    border-radius: .5rem .5rem 0 0;
+}
+
+footer { 
+    min-height : 2rem;
+    
+}
+
+
+nav {
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+    border-radius: 0 0 .5rem .5rem;
+    margin-bottom : .5rem;
+    min-height: 60px;
+    margin-top: -8px;
+}
+
+nav a{
+    text-decoration: none;
+    color: inherit;
+}
+
+h1 {
+    margin :0px;
+    padding-top: .5rem;
+    margin-bottom : .3rem;
+    font-size : 3rem;
+}
+
+
+article{
+    vertical-align : top;
+    
+    box-sizing : border-box;
+    width : 100%;
+    margin : 0px;
+    padding : 1rem;
+    border-radius: .5rem .5rem 0 0 ;
+    min-height : inherit;
+    
+}
+
+article h2 {
+    font-size : 1rem;
+    margin : 0px;
+    padding : 0px;
+    margin-bottom : 1rem;
+    text-align : center;
+}
+
+article h3 {
+    font-size : 1rem;
+    font-weight : normal;
+    margin : 0px;
+    padding : 0px;
+    margin-bottom : 1rem;
+    text-align : center;
+}
+
+
+
+/* le contenu des tweet  */
+
+
+.tweet {
+    text-align: left;
+    box-sizing : border-box;
+    width : 70%;
+    min-width : 300px;
+    margin: .5rem auto .5rem auto;
+    font-size : 0.8rem;
+    padding : .5rem;
+    border-radius: .3rem;
+    background : #ffffff;
+}
+
+.tweet-footer {
+    box-sizing : border-box;
+    margin: 0;
+    margin-top: .5rem;
+}
+
+.tweet a {
+    text-decoration : none;
+    color : inherit;
+}
+
+.tweet-text {
+    display : block;
+}
+
+.tweet-author {
+    float:right;
+}
+
+#tweet-controls {
+    box-sizing : border-box;
+    padding : .5rem;
+}
+
+.tweet-control{
+    display : inline-block;
+    text-align : center;
+    box-sizing : border-box;
+    text-decoration : none;
+    color : inherit;
+    width : 25%;
+}
+
+.tweet-score {
+    font-size :2rem;
+    text-align : center
+
+}
+.tweet-control img{
+
+    width : 28px;
+
+}
+
+.tweet-footer hr{
+    width : 90%;
+    margin : 0 auto 0 auto;
+    margin-bottom : .5rem;
+    
+}
+
+.pager {
+    margin: 0 auto 0 auto;
+    padding : 0px;
+    box-sizing : border-box;
+    width : 70%;
+    text-align:left;
+}
+
+#page-prev  {
+    text-align : left;
+}
+#page-next  {
+    text-align : right;
+}
+#page-next, #page-prev  {
+    display: inline-block;
+    width: 50%;
+    text-decoration : none;
+    color : inherit;
+    margin: 0px;
+    padding : 0px;
+}
+
+
+
+
+
+/* following */
+
+#followees {
+    padding : 0px;
+}
+
+#followees li {
+    list-style : none;
+}
+#followees li a {
+ text-decoration : none;
+}
+
+
+/* forms */
+
+
+.forms {
+    box-sizing : border-box;
+    display: inline-block;
+    width : 70%;
+    padding : .5rem;
+    margin: 0 auto 0 auto;
+}
+
+.forms-text {
+    resize: none;
+    border-radius: .3rem;
+    border: 0;
+    width : 100%;
+    margin-bottom : .5rem
+}
+
+.forms-button {
+    width : 40%;
+   
+}
+
+/* poster un tweet */
+
+#send_button {
+    text-align:right;
+    margin-top :1rem;
+}
+
+#tweet-form {
+    box-sizing : border-box;
+    display: inline-block;
+    width : 70%;
+    margin: .5rem auto .5rem auto;
+    height : 5rem;
+}
+
+
+/* loggin / signup forms */
+
+
+    
+
+
+/* le menu de navigation */  
+
+.button {
+    box-sizing : border-box;
+    width : 40%;
+    font-size: 1.2rem;
+    padding : 0;
+    border-radius: .5rem;
+    line-height: 2rem;
+    margin : 0 auto 0 auto;
+    margin-bottom : .5rem
+}
+
+.button a {
+    display: block;
+    width:  100%;
+}
+
+#nav-menu {
+    box-sizing : border-box;
+    margin : .5rem auto .5rem auto;
+    width : 70%;
+    padding-top : .5rem  ;
+    
+}
+
+nav a{
+    padding: 11px 50px;
+    display: inline-block;
+    border-radius: 15px;
+}
+
+.suivi {
+    box-sizing : border-box;
+    width : 20%;
+    margin: .5rem 1rem 1.5rem auto;
+    font-size : 0.8rem;
+    padding : .5rem;
+    border-radius: .3rem;
+    background : #ffffff;
+    display: inline-block; 
+}
+
+.suivi a{
+    text-decoration:none;
+    color: inherit;
+}
+#menu-accordeon {
+  margin:0;
+  list-style:none;
+  text-align: center;
+  width: 160px;
+  display: inline-grid;
+}
+#menu-accordeon ul {
+  padding:0;
+  margin:0;
+  list-style:none;
+  text-align: center;
+}
+#menu-accordeon li {
+   background-image: linear-gradient(to bottom, #3a81b8  0%, #09c  100%);
+   border-radius: 6px;
+   margin-bottom:2px;
+   border:solid 1px #333A40
+}
+#menu-accordeon li li {
+   max-height:0;
+   overflow: hidden;
+   transition: all .5s;
+   border-radius:0;
+   background: #444;
+   box-shadow: none;
+   border:none;
+   margin:0
+}
+#menu-accordeon a {
+  display:block;
+  text-decoration: none;
+  color: #fff;
+  padding: 8px 0;
+  font-family: verdana;
+  font-size:1.2em
+}
+#menu-accordeon ul li a, #menu-accordeon li:hover li a {
+  font-size:1em
+}
+#menu-accordeon li:hover {
+   background: #729EBF
+}
+#menu-accordeon li li:hover {
+   background: #999;
+}
+#menu-accordeon ul li:last-child {
+   border-radius: 0 0 6px 6px;
+   border:none;
+}
+#menu-accordeon li:hover li {
+  max-height: 15em;
+}
